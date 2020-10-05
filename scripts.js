@@ -9,7 +9,7 @@
 		  ;
 		   
 	  for(var i = 0; i < args.length; i++)
-		  result.push(args[i].replace('@', 'http://gh.rychlik.eu/syntaxhighlighter/scripts/'))
+		  result.push(args[i].replace('@', 'https://gh.rychlik.eu/syntaxhighlighter/scripts/'))
 		   
 	  return result
 	};
