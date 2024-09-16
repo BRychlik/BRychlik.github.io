@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wodowskaz</title>
+    <style>
+        #stan
+        {
+            color: red;
+            font-size: 3em;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        async function getData() {
+        const url = "https://danepubliczne.imgw.pl/api/data/hydro2";
+            try {
+                const response = await fetch(url);
+                if (!response.ok) {
+                throw new Error(`Response status: ${response.status}`);
+                }
+
+                const json = await response.json();
+
+                const pk = 151;    
+
+                console.log(json[pk]);
+
+                document.getElementById("nazwa").innerText = json[pk].nazwa_stacji;
+                document.getElementById("stan").innerText = json[pk].stan + " cm";
+                let data_loc = new Date( json[pk].stan_data + " UTC");
+                document.getElementById("data").innerText = data_loc.toString();
+                //console.log();
+            } catch (error) {
+                console.error(error.message);
+            }
+        }
+        getData();
+        setInterval(getData(), 6000000);
+    </script>
+    <div style="margin-left: auto; margin-right:auto; width: 40%; text-align: center;">
+        <h1 id="nazwa"></h1>
+        <h2 id="stan"></h1>
+        <h3 id="data"></h2>
+    </div>
+</body>
+</html>
