@@ -5,6 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wodowskaz</title>
     <style>
+        body{
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+        }
+        a, a:visited
+        {
+            color: blueviolet;
+        }
         #stan
         {
             color: red;
@@ -19,6 +26,11 @@
             display: flexbox;
             justify-content: center;
         }
+        footer
+        {
+            margin-top: 5em;
+            justify-content: end;
+        }
     </style>
 </head>
 <body>
@@ -32,9 +44,7 @@
                 }
 
                 const json = await response.json();
-
                 const pk = 151;    
-
                 console.log(json[pk]);
 
                 document.getElementById("nazwa").innerText = json[pk].nazwa_stacji;
@@ -50,9 +60,15 @@
         setInterval(getData(), 6000000);
     </script>
     <div id="container">
-        <h1 id="nazwa"></h1>
-        <h2 id="stan"></h1>
-        <h3 id="data"></h2>
+        <h1 id="nazwa">-------</h1>
+        <h2 id="stan">--- cm</h2>
+        <h3 id="data">------</h3>
+        <aside>
+            Prezentowane dane są opóźnione względem oficjalnej strony IMGW. Sprawdź <a href="https://hydro.imgw.pl/#/station/hydro/150170290?h=25">szczegółowe informacje</a>.
+        </aside>
+        <footer>
+            <a href="https://danepubliczne.imgw.pl/">Dane IMGW</a> 
+        </footer>
     </div>
 </body>
 </html>
